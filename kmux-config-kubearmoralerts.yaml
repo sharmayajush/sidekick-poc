@@ -1,0 +1,28 @@
+version: 0.2
+
+kmux:
+  source: 
+    stream: rabbitmq
+  vault: hashiVault
+
+vault:
+  server: localhost:8200
+  tls-skip-verify: true 
+
+rabbitmq:
+  server: "localhost:15672"
+  username: "guest"
+  password: "guest"
+  exchange:
+    name: "kubearmoralerts" # exchange name
+    type: "direct" # exchange type
+    durable: true
+    auto-delete: true
+  queue:
+    name: "kubearmoralerts"
+    durable: true
+    auto-delete: false
+  debug: false
+  consumer-tag: "channel-integration-kubearmoralerts"
+
+
